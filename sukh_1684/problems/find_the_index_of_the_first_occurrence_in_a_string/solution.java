@@ -1,36 +1,32 @@
 class Solution {
-  // function to convert character to integer
-  public int charToInt(int idx, String s) {
-    return (int)s.charAt(idx) - (int)'a';
-  }
+    public int strStr(String haystack, String needle) {
+        int len1 = haystack.length();
+        int len2 = needle.length();
+        if(len2>len1){
+            return -1;
+        }
+        if(len2==0 ){
+            return 0;
+        }
+        int pointer =0;
+        int cnt =0;
+        for(int i =0 ; i< len1;i++){
+            char c = haystack.charAt(i);
+            pointer =i;
+            
+            while(c == needle.charAt(cnt)){
+                  cnt++;
+                if(cnt==len2){
+                    return i;
+                }
+                if(pointer+1 == len1){
+                    return -1;
+                }
+                c = haystack.charAt(++pointer);
 
-  public int strStr(String haystack, String needle) {
-    int L = needle.length(), n = haystack.length();
-    if (L > n) return -1;
-
-    // base value for the rolling hash function
-    int a = 26;
-    // modulus value for the rolling hash function to avoid overflow
-    long modulus = (long)Math.pow(2, 31);
-
-    // compute the hash of strings haystack[:L], needle[:L]
-    long h = 0, ref_h = 0;
-    for (int i = 0; i < L; ++i) {
-      h = (h * a + charToInt(i, haystack)) % modulus;
-      ref_h = (ref_h * a + charToInt(i, needle)) % modulus;
+            }
+            cnt=0;
+        }
+        return -1;
     }
-    if (h == ref_h) return 0;
-
-    // const value to be used often : a**L % modulus
-    long aL = 1;
-    for (int i = 1; i <= L; ++i) aL = (aL * a) % modulus;
-
-    for (int start = 1; start < n - L + 1; ++start) {
-      // compute rolling hash in O(1) time
-      h = (h * a - charToInt(start - 1, haystack) * aL
-              + charToInt(start + L - 1, haystack)) % modulus;
-      if (h == ref_h) return start;
-    }
-    return -1;
-  }
 }
