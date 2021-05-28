@@ -9,7 +9,7 @@ class Solution {
         for( i=0;i<s.length();i++){
             char c=s.charAt(i);
 
-            for(int j=0;j<strs.length;j++){
+            for(int j=1;j<strs.length;j++){
                 if(strs[j].length()==0){
                     return "";
                 }
