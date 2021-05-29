@@ -15,29 +15,22 @@
  */
 class Solution {
     public boolean isValidBST(TreeNode root) {
-        Queue<TreeNode> nodes = new LinkedList<>();
-              depth(root,nodes);
-        while(nodes.size()>1){
-           TreeNode  node1= nodes.remove();
-           TreeNode node2= nodes.element();
-            if(node2.val<=node1.val){
+        List<Integer> elements = new ArrayList<>();
+          depth(root,elements);
+        int len = elements.size();
+        for(int i=1;i<len;i++){
+            if(elements.get(i-1)>=elements.get(i)){
                 return false;
             }
-            
         }
-            
-            
-            
-            return true;
+        return true;
     }
-    private void depth(TreeNode root,Queue<TreeNode> nodes){
-        if(root==null){
+    private void depth(TreeNode node, List<Integer> elements){
+        if(node == null){
             return;
         }
-        depth(root.left,nodes);
-        nodes.add(root);
-        depth(root.right,nodes);
+        depth(node.left,elements);
+        elements.add(node.val);
+        depth(node.right,elements);
     }
-    
-
 }
