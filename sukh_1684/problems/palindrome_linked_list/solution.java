@@ -10,6 +10,49 @@
  */
 class Solution {
     public boolean isPalindrome(ListNode head) {
+        ListNode temp = head;
+        int counter=0;
+        while(temp!=null){
+            counter++;
+            temp = temp.next;
+        }
+        int startTwo = (counter%2==0)?counter/2+1:counter/2 ;
+
+        ListNode current = head;
+        for(int i=1;i<startTwo;i++){
+            current = current.next;
+        }
+
+        ListNode prev = null;  // use this to compare
+        while(current!=null){
+            ListNode next = current.next;
+            current.next=prev;
+            prev = current;
+            current= next;
+        }
+      while(head!=null && prev!=null){
+          if(head.val != prev.val){
+              return false;
+          }
+          head = head.next;
+          prev = prev.next;
+      }
+        return true;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+        
+        /*
         if(head==null){
             return true;
         }
@@ -65,5 +108,6 @@ class Solution {
             temp=temp.next;
         }
        return true; 
-    }
-}
+        
+        
+        */
