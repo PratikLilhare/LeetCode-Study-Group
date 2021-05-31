@@ -1,37 +1,34 @@
 class Solution {
     public boolean isValid(String s) {
-       Stack<Character> stack = new Stack<>();
+        
+        //'(', ')', '{', '}', '[' and ']'     
+        Stack<Character> brackets = new Stack<>();
         for(int i=0;i<s.length();i++){
-            char c = s.charAt(i);
-            if((c==')'||c=='}'||c==']')){
-                if(stack.isEmpty()){
-                return false;
-                }
-                char temp=stack.pop();
-                if(temp=='(' && c==')'){
-                    continue;
-                }
-                if(temp=='{' && c=='}'){
-                    continue;
-                }
-                if(temp=='[' && c==']'){
-                    continue;
-                }
-                return false;
+            char temp = s.charAt(i);
+            if(temp == '(' || temp == '{' || temp == '['){
+                brackets.push(temp);
             }
             else{
-                stack.push(c);
+                if(brackets.isEmpty()){
+                    return false;
+                }
+            char check = brackets.pop();
+
+            if(temp == ')' && check!='('){
+                return false;
             }
-            
-      
-            
+           if(temp == ']' && check!='['){
+                return false;
+            }
+            if(temp == '}' && check!='{'){
+                return false;
+            }
+            }
         }
-              if(stack.isEmpty()){
-                return true;
-            }
             
-            return false;
-        
-        
+         if(brackets.isEmpty())  {
+        return true;
+         }
+        return false;
     }
 }
