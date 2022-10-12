@@ -1,18 +1,30 @@
 class Solution:
     def mctFromLeafValues(self, arr: List[int]) -> int:
-        #monotonic stack
         stack = [float('inf')]
+        n = len(arr)
         res = 0
-        for nums in arr:
-            while stack and stack[-1] <= nums:
-                curr = stack.pop()
-                res += curr * min(stack[-1], nums)  
-            stack.append(nums)
+        for i in arr:
+            if i < stack[-1]:
+                stack.append(i)
+            else :
+                #current element is greater than last in stack
+                temp = stack.pop()
+                res += temp* min(stack[-1],i)
+                while stack[-1]  < i:
+                    temp = stack.pop()
+                    res += temp* min(stack[-1],i)
+                stack.append(i)
+                    
+                
+        while len(stack) > 2 :
+            temp = stack.pop()
+            res += temp * stack[-1]
             
-        while len(stack) > 2:
-            res += stack.pop() * stack[-1]
-        
         return res
             
-            
                 
+                
+                
+                
+            
+            
