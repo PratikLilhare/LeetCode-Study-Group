@@ -11,6 +11,4 @@ class Solution:
             maxLen = max(maxLen,d[temp])
         print(d)
         return maxLen
-
-
-
+        
