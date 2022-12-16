@@ -3,8 +3,7 @@ name: Sukh Sync
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 8 * * *"
-    - cron: "33 20 * * *"
+    - cron: "45 20 * * *"
 
 jobs:
   build:
