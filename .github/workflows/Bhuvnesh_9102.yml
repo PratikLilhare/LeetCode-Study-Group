@@ -1,0 +1,19 @@
+name: Bhuvnesh Sync
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 8 * * 6"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Sync
+        uses: joshcai/leetcode-sync@v1.5
+        with:
+          github-token: ${{ github.token }}
+          leetcode-csrf-token: ${{ secrets.Bhuvnesh_9102_TOKEN }}
+          leetcode-session: ${{ secrets.Bhuvnesh_9102_SESSION }}
+          destination-folder: Bhuvnesh_9102
