@@ -14,6 +14,6 @@ jobs:
         uses: joshcai/leetcode-sync@v1.5
         with:
           github-token: ${{ github.token }}
-          leetcode-csrf-token: ${{ secrets.Markbdsouza_9988_TOKEN }}
-          leetcode-session: ${{ secrets.Markbdsouza_9988_SESSION }}
+          leetcode-csrf-token: ${{ secrets.MARKBDSOUZA_9988_TOKEN }}
+          leetcode-session: ${{ secrets.MARKBDSOUZA_9988_SESSION }}
           destination-folder: Markbdsouza_9988
