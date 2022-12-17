@@ -3,8 +3,8 @@ name: Pratik Sync
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 6 * * *"
-    - cron: "0 22 * * *"
+    - cron: "23 6 * * *"
+    - cron: "23 14 * * *"
 
 jobs:
   build:
