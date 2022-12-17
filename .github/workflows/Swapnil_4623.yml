@@ -1,0 +1,20 @@
+name: Swapnil_4623 Sync
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 6 * * *"
+    - cron: "23 14 * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Sync
+        uses: joshcai/leetcode-sync@v1.5
+        with:
+          github-token: ${{ github.token }}
+          leetcode-csrf-token: ${{ secrets.SWAPNIL_4623_TOKEN }}
+          leetcode-session: ${{ secrets.SWAPNIL_4623_SESSION }}
+          destination-folder: Swapnil_4623
